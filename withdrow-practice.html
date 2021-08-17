@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Widtraw</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1 class="text-6xl text-center mt-11">Sozib let's get some <span class="text-purple-700 font-bold"> Money
+            !!!</span> </h1>
+    <section class="mt-16">
+        <div class="grid grid-cols-3 gap-4 w-3/4 mx-auto">
+            <div class="bg-yellow-300 p-20 rounded">
+                <h3 class="text-3xl text-center font-bold">Deposit</h3>
+                <h4 class="text-4xl text-center pt-2">$<span id="current-deposit">000</span> </h4>
+            </div>
+            <div class="bg-indigo-300 p-20 rounded">
+                <h3 class="text-3xl text-center font-bold">Widtraw</h3>
+                <h4 class="text-4xl text-center pt-2">$<span id="current-withdraw">000</span> </h4>
+            </div>
+            <div class="bg-green-300 p-20 rounded">
+                <h3 class="text-3xl text-center font-bold">Balence</h3>
+                <h4 class="text-4xl text-center pt-2">$<span id="current-blance">1240</span> </h4>
+            </div>
+        </div>
+    </section>
+    <section class="mt-16">
+        <div class="grid grid-cols-2 gap-4 w-3/4 mx-auto">
+            <div class="bg-pink-300 p-20 rounded">
+                <h3 class="text-3xl font-bold">Please Deposit</h3>
+                <input id="user-deposit" class="w-3/4 border-2 border-gray-300 py-1 px-2 my-2 rounded block" type="text"
+                    placeholder="Enter your $">
+                <button id="deposit-btn" class="bg-yellow-200 p-4 font-medium rounded mt-3">Deposite</button>
+            </div>
+            <div class="bg-purple-300 p-20 rounded">
+                <h3 class="text-3xl font-bold">Please Widtraw</h3>
+                <input id="user-Withdraw" class="w-3/4 border-2 border-gray-300 py-1 px-2 my-2 rounded block"
+                    type="text" placeholder="Enter your $">
+                <button id="Withdraw-btn" class="bg-yellow-200 p-4 font-medium rounded mt-3">Withdraw</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById("deposit-btn").addEventListener("click", function () {
+            // user er value ke nia ashlam 
+            const userDeposite = document.getElementById("user-deposit");
+            const userDepositeAmount = userDeposite.value;
+            // curent value koto 
+            const currentDeposite = document.getElementById("current-deposit");
+            // current value ber kore rakhlam 
+            const currentTotalDeposite = currentDeposite.innerText;
+            // ekhn ager ta and porer ta jog korlam 
+            const totalDeposite = parseFloat(currentTotalDeposite) + parseFloat(userDepositeAmount);
+            // and current replace koredilam 
+            currentDeposite.innerText = totalDeposite;
+
+            // current blance ano 
+
+            const currentBlance = document.getElementById("current-blance");
+            const currentBlanceAmount = currentBlance.innerText;
+
+            const totalBlance = totalDeposite + parseFloat(currentBlanceAmount);
+
+            currentBlance.innerHTML = totalBlance;
+            // clear 
+            userDeposite.value = "";
+        })
+
+
+        // withdraw 
+
+        document.getElementById("Withdraw-btn").addEventListener("click", function () {
+            const userWithdraw = document.getElementById("user-Withdraw");
+            const userWithdrawAmountText = userWithdraw.value;
+            const userWithdrawAmount = parseFloat(userWithdrawAmountText);
+
+            const currentWithdraw = document.getElementById("current-withdraw");
+            const currentWithdrawText = currentWithdraw.innerText;
+            const currentWithdrawAmount = parseFloat(currentWithdrawText);
+
+            const totalWithdrawAmount = userWithdrawAmount + currentWithdrawAmount;
+
+            currentWithdraw.innerText = totalWithdrawAmount;
+
+            // blance 
+
+            const currentBlancee = document.getElementById("current-blance");
+            const currentBlanceTextt = currentBlancee.innerText;
+            const currentBlanceAmountt = parseFloat(currentBlanceTextt);
+
+            const currentWithdraww = document.getElementById("current-withdraw");
+            const currentWithdrawTextt = currentWithdraww.innerText;
+            const currentWithdrawAmountt = parseFloat(currentWithdrawTextt);
+
+            const totalWithdrawAmountBlance = currentBlanceAmountt - currentWithdrawAmountt;
+
+            currentBlancee.innerText = totalWithdrawAmountBlance;
+
+
+
+            // clear 
+
+            userWithdraw.value = "";
+        })
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
